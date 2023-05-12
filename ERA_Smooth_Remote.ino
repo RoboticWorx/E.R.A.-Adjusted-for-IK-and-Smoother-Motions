@@ -6,9 +6,6 @@ const int yPin1 = 5;
 const int xPin2 = 6;
 const int yPin2 = 7;
 
-float x = 400;
-float y = 0;
-
 unsigned long previousMillis = 0;
 
 // REPLACE WITH YOUR RECEIVER MAC Address
@@ -66,21 +63,6 @@ void loop() {
   
   unsigned long currentMillis = millis();
 
-  /*if (currentMillis - previousMillis >= 15)
-  {
-    previousMillis = currentMillis;
-    if (xVal > 400)
-      x++;
-    else if (xVal < 100)
-      x--;
-
-    if (yVal > 400)
-      y++;
-    else if (yVal < 100)
-      y--;
-  }*/
-
-
   /*Serial.print(x);
   Serial.print("    ");
   Serial.println(y);*/
@@ -90,31 +72,22 @@ void loop() {
   myData.y = yVal;
   //myData.b = mapToValue(xPin2, 0, 500);
   
-  /*Serial.print(mapToValue(xPin1, 0, 500));
-  Serial.print("    ");
-  Serial.print(-mapToValue(yPin1, -250, 250));
-  Serial.print("    ");
-  Serial.print(mapToValue(xPin2, 0, 500));
-  Serial.print("    ");
-  Serial.println(mapToValue(yPin2, -250, 250));*/
-  
-  
   // Send message via ESP-NOW
   esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
   
-  /*if (result == ESP_OK) {
+  if (result == ESP_OK) {
     Serial.println("Sent with success");
   }
   else {
     Serial.println("Error sending the data");
-  }*/
+  }
   
 }
 
 // callback when data is sent
 void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
-  //Serial.print("\r\nLast Packet Send Status:\t");
-  //Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
+  Serial.print("\r\nLast Packet Send Status:\t");
+  Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
 }
 
 float mapToValue(int pin, int min, int max)
