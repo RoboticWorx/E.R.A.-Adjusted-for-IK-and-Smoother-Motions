@@ -70,7 +70,7 @@ void setup() {
 void loop() 
 {
   //WIFI
-  //Used for moving it in a straight line with the wireless control. COMMENT OUT if using predetermined coordinates, otherwise will pick up random signals
+  //Used for moving it in a straight line with the wireless control. COMMENT OUT 74-92 if using predetermined coordinates, otherwise will pick up random signals
   unsigned long currentMillis = millis();
   if (currentMillis - previousMillis >= 20)
   {
