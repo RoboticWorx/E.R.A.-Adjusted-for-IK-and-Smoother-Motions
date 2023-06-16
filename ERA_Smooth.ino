@@ -121,7 +121,7 @@ void loop()
     j1Stepper_R.setSpeed(j1Speed); 
   }  
 
-  j2Stepper.moveTo(theta2*50); //Set target position (50 steps/degree). 
+  j2Stepper.moveTo(theta2*51.8); //Set target position (50 steps/degree). 
   j2Stepper.setSpeed(j2Speed); //800 steps/sec
 
   baseStepper.moveTo(delta*16.666667); //Set target position (16.666667 steps/degree). 
